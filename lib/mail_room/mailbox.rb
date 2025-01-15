@@ -196,15 +196,10 @@ module MailRoom
     end
 
     def lookup_verify_mode(verify_mode)
-      if verify_mode == 0
-        verify_mode = :none
-      elsif verify_mode == 1
-        verify_mode = :peer
-      end
       case verify_mode
-        when :none
+        when 0
           OpenSSL::SSL::VERIFY_NONE
-        when :peer
+        when 1
           OpenSSL::SSL::VERIFY_PEER
         when :client_once
           OpenSSL::SSL::VERIFY_CLIENT_ONCE
