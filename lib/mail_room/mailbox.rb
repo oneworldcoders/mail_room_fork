@@ -190,16 +190,25 @@ module MailRoom
       return options unless options.is_a?(Hash)
       return options unless options.has_key?(:verify_mode)
 
-      options[:verify_mode] = lookup_verify_mode(options[:verify_mode])
+      # Create a duplicate of the hash and modify it
+      options.dup.tap do |opts|
+        opts[:verify_mode] = lookup_verify_mode(opts[:verify_mode])
+      end
 
       options
     end
 
     def lookup_verify_mode(verify_mode)
+      if verify_mode == 0
+        verify_mode = :none
+      else verify_mode == 1
+        verify_mode = :peer
+      end
+      
       case verify_mode
-        when 0
+        when :none
           OpenSSL::SSL::VERIFY_NONE
-        when 1
+        when :peer
           OpenSSL::SSL::VERIFY_PEER
         when :client_once
           OpenSSL::SSL::VERIFY_CLIENT_ONCE
