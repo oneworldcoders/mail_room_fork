@@ -200,6 +200,8 @@ module MailRoom
 
     def lookup_verify_mode(verify_mode)    
       case verify_mode
+        # make sure the verify mode is an integer
+        Rails.logger.info("Verify mode has the following structure: " + #{verify_mode})
         when 0
           OpenSSL::SSL::VERIFY_NONE
         when 1
