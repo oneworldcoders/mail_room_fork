@@ -199,7 +199,7 @@ module MailRoom
     end
 
     def lookup_verify_mode(verify_mode)    
-      Rails.logger.info("Verify mode has the following structure:  + #{verify_mode} ")
+      # Rails.logger.info("Verify mode has the following structure:  + #{verify_mode} ")
       case verify_mode
         # make sure the verify mode is an integer
         when 0
