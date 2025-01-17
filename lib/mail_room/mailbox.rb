@@ -200,17 +200,18 @@ module MailRoom
 
     def lookup_verify_mode(verify_mode)    
       # Rails.logger.info("Verify mode has the following structure:  + #{verify_mode} ")
-      case verify_mode
-        # make sure the verify mode is an integer
-        when 0
-          OpenSSL::SSL::VERIFY_NONE
-        when 1
-          OpenSSL::SSL::VERIFY_PEER
-        when 4
-          OpenSSL::SSL::VERIFY_CLIENT_ONCE
-        when 2
-          OpenSSL::SSL::VERIFY_FAIL_IF_NO_PEER_CERT
-      end
+      OpenSSL::SSL::VERIFY_NONE
+      # case verify_mode
+      #   # make sure the verify mode is an integer
+      #   when 0
+      #     OpenSSL::SSL::VERIFY_NONE
+      #   when 1
+      #     OpenSSL::SSL::VERIFY_PEER
+      #   when 4
+      #     OpenSSL::SSL::VERIFY_CLIENT_ONCE
+      #   when 2
+      #     OpenSSL::SSL::VERIFY_FAIL_IF_NO_PEER_CERT
+      # end
     end
 
     def normalize_log_path(log_path)
